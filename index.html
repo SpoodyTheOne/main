@@ -5,6 +5,75 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
+
+#error {
+font-family: sans-serif;
+z-index: 2000;
+position: fixed;
+top: 150px;
+display: none;
+text-align: center;
+background-color: white;
+
+border-radius: 25px;
+
+width: 75%;
+position: fixed;
+left: 50%;
+margin-left: -37.5%;
+height: 50%;
+
+overflow: auto
+}
+
+#darke {
+display: none;
+position: fixed;
+z-index: 1999;
+width: 100%;
+height: 100%;
+margin: -8.3px;
+}
+
+#error[orient="landscape"] {
+font-family: sans-serif;
+z-index: 2000;
+position: fixed;
+top: 150px;
+display: block;
+text-align: center;
+background-color: white;
+
+border-radius: 25px;
+
+width: 75%;
+position: fixed;
+left: 50%;
+margin-left: -37.5%;
+height: 50%;
+
+overflow: auto
+}
+
+#darke[orient="landscape"] {
+display: block;
+position: fixed;
+z-index: 1999;
+width: 100%;
+height: 100%;
+margin: -8.3px;
+}
+
+#inside {
+position: relative;
+top: 5px;
+font-family: sans-serif;
+text-align: center;
+padding: 0px;
+width: 100%;
+}
+
+
 .header {
 position: fixed;
 top: -8px;
@@ -34,6 +103,7 @@ z-index: 41;
 position: fixed;
 top: 20%;
 bottom: 50%;
+
 display: none;
 text-align: center;
 background-color: white;
@@ -108,10 +178,10 @@ height: 50%;
 
 overflow: auto
 }
-	
+
 #un {
 font-size: 16px;
-	}
+}
 </style>
 </head>
 
@@ -119,6 +189,21 @@ font-size: 16px;
 <div class="header">
 <h2>Spoody</h2>
 <p id="un"><a href="free.html">Free</a> | <a href="contact.html">Contact me</a> | <a href="buy.html">Buy</a> | <a href="#" id="login">Login</a> | <a href="#" id="bout">About me</a></p>
+</div>
+
+<div id="darke">
+</div>
+<div id="error">
+<h3 style="width: 100%; height: 60px; background-color: red; margin-top: -0px; margin-bottom: -50px;">Error!</h3>
+<p>Something went wrong!</p>
+<div id="inside">
+<ul id="inside">
+<p>It looks like you tried to view the site on its head!</p>
+<p>this is sadly not possible due to certain errors that occur when said thing is done!</p>
+<a href="index.html"><p>turn your screen upright and click here to fix</p></a>
+</ul>
+</div>
+</div>
 </div>
 
 <div id="dark">
@@ -261,6 +346,13 @@ open2 = false
 }
 
 }
+
+screen.orientation.lock();   // webkit only
+
+screen.lockOrientation("portrait-primary");
+
+var rotate = 0 - window.orientation;
+setAttribute("transform:rotate("+rotate+"deg);-ms-transform:rotate("+rotate+"deg);-webkit-transform:rotate("+rotate+"deg)", "style");
 
 </script>
 </body>
